@@ -1,0 +1,12 @@
+{
+  "name": "passport-naver-example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "passport": "^0.4.1"
+  }
+}

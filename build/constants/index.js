@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TOKEN_URL = exports.PROFILE_URL = exports.AUTHORIZATION_URL = exports.AUTHORIZATION_NAME = void 0;
+var AUTHORIZATION_NAME = 'naver';
+exports.AUTHORIZATION_NAME = AUTHORIZATION_NAME;
+var AUTHORIZATION_URL = 'https://nid.naver.com/oauth2.0/authorize';
+exports.AUTHORIZATION_URL = AUTHORIZATION_URL;
+var PROFILE_URL = 'https://openapi.naver.com/v1/nid/me';
+exports.PROFILE_URL = PROFILE_URL;
+var TOKEN_URL = 'https://nid.naver.com/oauth2.0/token';
+exports.TOKEN_URL = TOKEN_URL;
