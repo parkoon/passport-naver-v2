@@ -1,4 +1,4 @@
-import Strategy from './NaverStrategy'
+import Strategy from './strategy'
 
 export default Strategy
 
