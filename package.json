@@ -1,24 +1,20 @@
 {
-  "name": "passport-naver",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "clean": "rimraf build/*",
-    "build": "npm run clean && npx tsc",
-    "lint": "eslint -c .eslintrc.js src/**/*.ts"
-  },
+  "name": "passport-naver-v2",
+  "version": "2.0.0",
+  "description": "naver oauth2 passport login",
+  "main": "./build/passport-naver.js",
+  "keywords": [
+    "passport",
+    "naver",
+    "passport-naver",
+    "oauth2"
+  ],
+  "author": "devparkoon@gmail.com",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/parkoon/passport-naver.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/parkoon/passport-naver/issues"
-  },
-  "homepage": "https://github.com/parkoon/passport-naver#readme",
   "dependencies": {
     "passport-oauth2": "^1.5.0"
   },
@@ -32,5 +28,10 @@
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.2.3"
+  },
+  "scripts": {
+    "clean": "rimraf build/*",
+    "build": "npm run clean && npx tsc",
+    "lint": "eslint -c .eslintrc.js src/**/*.ts"
   }
 }
