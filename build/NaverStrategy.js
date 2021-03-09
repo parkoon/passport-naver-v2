@@ -48,16 +48,8 @@ var Strategy = /** @class */ (function (_super) {
         _this.name = 'naver';
         _this._profileURL = constants_1.PROFILE_URL;
         return _this;
-        // this._oauth2.setAccessTokenName('access_token')
     }
-    //   initOptions(options: StrategyOptions) {
-    //     options.authorizationURL = options.authorizationURL || AUTHORIZATION_URL
-    //     options.tokenURL = options.tokenURL || TOKEN_URL
-    //     options.clientSecret = options.clientSecret || AUTHORIZATION_NAME
-    //     return options
-    //   }
     Strategy.prototype.userProfile = function (accessToken, done) {
-        // this._oauth2.useAuthorizationHeaderforGET(true)
         this._oauth2.get(this._profileURL, accessToken, function (err, body) {
             if (err) {
                 return done(new passport_oauth2_1.InternalOAuthError('😵Fail to fetch user profile', err));
