@@ -21,5 +21,5 @@ export type Profile = {
 export class Strategy extends passport.Strategy {
   constructor(options: Partial<StrategyOptions>, verify: VerifyFunction)
 
-  userProfile(accessToken: string, done: (error: Error, profile?: Profile) => void)
+  userProfile(accessToken: string, done: (error: Error, profile?: Profile) => void): void
 }
