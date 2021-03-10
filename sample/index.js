@@ -35,6 +35,8 @@ passport.deserializeUser(function (obj, done) {
  * express app setting
  */
 app.use(passport.initialize())
+
+app.get('/login/reprompt', passport.authenticate('naver', { authType: 'reprompt' }))
 app.get('/login', passport.authenticate('naver', { state: 'sampleState' }))
 app.get('/callback', passport.authenticate('naver'), (req, res) => {
   res.send('result :' + JSON.stringify({ state: req.query.state, user: req.user }))

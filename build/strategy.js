@@ -44,24 +44,28 @@ var Strategy = /** @class */ (function (_super) {
         options.tokenURL = options.tokenURL || constants_1.TOKEN_URL;
         options.clientSecret = options.clientSecret || constants_1.AUTHORIZATION_NAME;
         _this = _super.call(this, options, verify) || this;
-        passport_oauth2_1.default.call(_this, options, verify);
         _this.name = 'naver';
         _this._profileURL = constants_1.PROFILE_URL;
         return _this;
     }
+    Strategy.prototype.authorizationParams = function (options) {
+        var params = {};
+        // https://developers.naver.com/docs/login/devguide/#5-1-5-%EC%82%AC%EC%9A%A9%EC%9E%90%EA%B0%80-%EA%B1%B0%EB%B6%80%ED%95%9C-%ED%94%84%EB%A1%9C%ED%95%84-%EA%B6%8C%ED%95%9C%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC-%EB%8B%A4%EC%8B%9C-%EB%8F%99%EC%9D%98%EB%A5%BC-%EC%88%98%ED%96%89%ED%95%98%EB%8A%94-%EA%B2%BD%EC%9A%B0
+        if (options.authType) {
+            params.auth_type = options.authType;
+        }
+        return params;
+    };
     Strategy.prototype.userProfile = function (accessToken, done) {
         this._oauth2.get(this._profileURL, accessToken, function (err, body) {
             if (err) {
-                return done(new passport_oauth2_1.InternalOAuthError('😵Fail to fetch user profile', err));
+                return done(new passport_oauth2_1.InternalOAuthError('Fail to fetch user profile', err));
             }
             try {
                 var parsedBody = JSON.parse(body);
-                var _a = parsedBody, response = _a.response, resultcode = _a.resultcode, message = _a.message;
-                if (!response || !message) {
-                    return done(new passport_oauth2_1.InternalOAuthError('😵Empty api response & message', err));
-                }
+                var _a = parsedBody, response = _a.response, resultcode = _a.resultcode;
                 if (resultcode !== '00') {
-                    return done(new passport_oauth2_1.InternalOAuthError('😵Something went wrong from naver login api', err));
+                    return done(new passport_oauth2_1.InternalOAuthError('Something went wrong from naver login api', err));
                 }
                 var id = response.id, nickname = response.nickname, age = response.age, gender = response.gender, email = response.email, mobile = response.mobile, name_1 = response.name, birthday = response.birthday, birthYear = response.birthyear, profileImage = response.profile_image, mobileE164 = response.mobile_e164;
                 var profile = {
