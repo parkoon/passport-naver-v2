@@ -39,6 +39,6 @@ declare module 'passport' {
      * 프로필 항목을 다시 동의 받을 때 사용한다.
      * 아이디와 패스워드 입력 없이 프로필 동의 창으로 이동하여 다시 동의를 받는다.
      */
-    authType: 'reprompt' | 'reauthenticate'
+    authType?: 'reprompt' | 'reauthenticate'
   }
 }
