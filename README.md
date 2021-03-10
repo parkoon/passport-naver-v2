@@ -66,3 +66,21 @@ passport.use(
 3. `.env` 파일을 생성하고 네아로 애플리케이션을 생성할때 받은 **Client ID** 와 **Client Secret** 를 `API_KEY` 와 `CLIENT_SECRET_KEY` 에 각각 입력해준다.
 4. `npm start` 로 서버를 실행한다.
 5. 브라우저를 열고 `http://locahost:3000/login` 을 접속한다.
+
+## 예외사항
+
+네이버는 필수정보 항목에 체크를 하지 않아도 로그인이 된다. 필수 항목 또한 사용자가 선택할 수 있다는데, 그럼 선택이랑 다를게 없어 보이는데 왜 그랬는지 알 수 없다. [참고](https://developers.naver.com/forum/posts/30506)
+
+이 부분은 서비스를 개발할 때 문제가 된다. 네아로에서 받은 이메일을 통해 서비스에 회원가입을 하는 로직이 있다면 서비스 서버에서는 오류를 내뱉을 것이다.
+
+필수임에도 동의 체크를 하지 않고 들어온 고객에 한하여 다시 동의창을 보여주는게 이상적으로 보인다.
+
+이미 동의를 한 사용자에게 동의창을 다시 띄우기 위해서는 사용자가 네이버 계정에 들어가서 서비스 연결을 끊어야 한다.
+
+하지만 아래와 같은 옵션을 이용하면, 사용자가 서비스 이용을 끊지 않고도 다시 동의창을 호출 할 수 있다.
+
+```javascript
+app.get('/login', passport.authenticate('naver', { authType: 'reprompt' }))
+```
+
+`reprompt` 말고도 `reauthenticate` 옵션도 있다. `reauthenticate` 는 동의창이 아닌 아이디 / 패스워드 입력부터 시작한다.
