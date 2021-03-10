@@ -44,5 +44,5 @@ app.get('/callback', passport.authenticate('naver'), (req, res) => {
  * run server
  */
 app.listen(PORT, () => {
-  console.log(`💡Server is running on ${PORT}`)
+  console.log(`💡 Server is running on ${PORT}`)
 })

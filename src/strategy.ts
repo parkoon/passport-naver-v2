@@ -25,7 +25,7 @@ export default class Strategy extends OAuth2Strategy {
   userProfile(accessToken: string, done: (error: Error, profile?: Profile) => void) {
     this._oauth2.get(this._profileURL, accessToken, (err: any, body: string) => {
       if (err) {
-        return done(new InternalOAuthError('😵Fail to fetch user profile', err))
+        return done(new InternalOAuthError('😵 Fail to fetch user profile', err))
       }
 
       try {
@@ -34,11 +34,11 @@ export default class Strategy extends OAuth2Strategy {
         const { response, resultcode, message } = parsedBody as PassportProfileBody
 
         if (!response || !message) {
-          return done(new InternalOAuthError('😵Empty api response & message', err))
+          return done(new InternalOAuthError('😵 Empty api response & message', err))
         }
 
         if (resultcode !== '00') {
-          return done(new InternalOAuthError('😵Something went wrong from naver login api', err))
+          return done(new InternalOAuthError('😵 Something went wrong from naver login api', err))
         }
 
         const {
