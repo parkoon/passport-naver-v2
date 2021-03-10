@@ -28,7 +28,7 @@ export class Strategy extends passport.Strategy {
 }
 
 declare module 'passport' {
-  interface AuthenticateOptions extends StrategyOptions {
+  interface AuthenticateOptions {
     /**
      * `reauthenticate`
      *
