@@ -1,4 +1,4 @@
-# passport-kakao
+# passport-naver-v2
 
 passport oauth2 에 naver 로그인 연동
 
